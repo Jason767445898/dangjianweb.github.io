@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>党员服务平台</title>
+    <link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="user-info">
+            <img src="images/avatar.png" alt="用户头像" class="avatar">
+            <span class="username" id="memberUsername"></span>
+            <button onclick="logout()" class="logout-btn">退出登录</button>
+        </div>
+        <ul class="menu">
+            <li><a href="#study">党课学习</a>
+                <ul class="submenu">
+                    <li><a href="#theory">全国党性知识</a></li>
+                    <li><a href="#local">指标性知识</a></li>
+                </ul>
+            </li>
+            <li><a href="#resources">资讯了解</a></li>
+            <li><a href="#village">我是村民</a></li>
+            <li><a href="#development">党员发展</a>
+                <ul class="submenu">
+                    <li><a href="#active">积极分子</a></li>
+                    <li><a href="#development-path">发展对象</a></li>
+                    <li><a href="#formal">正式党员</a></li>
+                </ul>
+            </li>
+            <li><a href="#messages">我的消息</a>
+                <ul class="submenu">
+                    <li><a href="#notifications">通知</a></li>
+                    <li><a href="#ai">人工客服</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <main class="content">
+        <!-- 内容区域将根据菜单选择动态加载 -->
+    </main>
+    <script src="js/party-member.js"></script>
+</body>
+</html> 

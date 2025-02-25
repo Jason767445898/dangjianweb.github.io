@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>党员登录 - 党建网站</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <header class="header">
+        <h1>党建网站</h1>
+        <a href="index.html" class="back-btn">返回首页</a>
+    </header>
+
+    <div class="login-container">
+        <h2>党员登录</h2>
+        <form id="partyMemberLogin" onsubmit="return handlePartyMemberLogin(event)">
+            <div class="form-group">
+                <label for="username">党员编号</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">密码</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">登录</button>
+        </form>
+    </div>
+</body>
+<script src="js/party-member.js"></script>
+</html> 
