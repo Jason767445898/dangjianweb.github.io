@@ -14,8 +14,8 @@ body {
 
 /* Logo图片样式 */
 .header-logo {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: block;
 }
 
@@ -30,7 +30,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 20px 20px;
     background-color: #c12c1f;
     color: white;
 }
@@ -223,7 +223,7 @@ body {
     padding: 8px 15px;
     background-color: #fff;
     color: #c12c1f;
-    border: 2px solid #fff;
+    border: none;
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
