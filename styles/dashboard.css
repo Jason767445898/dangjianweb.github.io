@@ -209,3 +209,62 @@ body {
         font-size: 14px;
     }
 } 
+
+/* ... existing code ... */
+
+/* 时间线项样式更新 */
+.timeline-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    position: relative;
+}
+
+.timeline-header h3 {
+    margin: 0;
+    margin-left: 15px;
+    flex: 1;
+}
+
+.toggle-icon {
+    font-size: 20px;
+    color: #c12c1f;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.timeline-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #fff;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.timeline-item {
+    margin-bottom: 20px;
+    padding-left: 70px;
+}
+
+.timeline-item.active .timeline-header {
+    background: #f0f0f0;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .timeline-item {
+        padding-left: 50px;
+    }
+    
+    .timeline-header {
+        padding: 8px;
+    }
+    
+    .timeline-header h3 {
+        font-size: 16px;
+    }
+}

@@ -52,4 +52,30 @@ function loadContent(section) {
             break;
         // ... 其他内容处理
     }
-} 
+}
+
+// 切换时间线内容显示/隐藏
+function toggleTimelineContent(header) {
+    const item = header.parentElement;
+    const content = item.querySelector('.timeline-content');
+    const toggleIcon = header.querySelector('.toggle-icon');
+    
+    // 切换显示状态
+    if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        toggleIcon.textContent = '+';
+        item.classList.remove('active');
+    } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        toggleIcon.textContent = '-';
+        item.classList.add('active');
+    }
+}
+
+// 页面加载时默认关闭所有内容
+document.addEventListener('DOMContentLoaded', function() {
+    const timelineContents = document.querySelectorAll('.timeline-content');
+    timelineContents.forEach(content => {
+        content.style.maxHeight = null;
+    });
+}); 
