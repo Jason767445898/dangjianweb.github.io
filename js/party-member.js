@@ -58,17 +58,23 @@ function loadContent(section) {
 function toggleTimelineContent(header) {
     const item = header.parentElement;
     const content = item.querySelector('.timeline-content');
-    const toggleIcon = header.querySelector('.toggle-icon');
     
-    // 切换显示状态
-    if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-        toggleIcon.textContent = '+';
+    // 关闭其他所有打开的项目
+    const allItems = document.querySelectorAll('.timeline-item');
+    allItems.forEach(otherItem => {
+        if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+            otherItem.querySelector('.toggle-icon').textContent = '+';
+        }
+    });
+    
+    // 切换当前项目
+    if (item.classList.contains('active')) {
         item.classList.remove('active');
+        header.querySelector('.toggle-icon').textContent = '+';
     } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-        toggleIcon.textContent = '-';
         item.classList.add('active');
+        header.querySelector('.toggle-icon').textContent = '×';
     }
 }
 

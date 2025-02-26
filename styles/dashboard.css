@@ -178,10 +178,11 @@ body {
 }
 
 .timeline-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
     background: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 0 20px;
 }
 
 .timeline-content h3 {
@@ -195,8 +196,7 @@ body {
 }
 
 .timeline-content li {
-    margin-bottom: 8px;
-    color: #333;
+    margin: 10px 0;
 }
 
 /* 响应式调整 */
@@ -222,11 +222,11 @@ body {
 .timeline-header {
     display: flex;
     align-items: center;
+    padding: 15px;
+    background: #f0f0f0;
     cursor: pointer;
-    padding: 10px;
-    background: #f9f9f9;
-    border-radius: 8px;
-    position: relative;
+    border-radius: 4px;
+    margin-bottom: 2px;
 }
 
 .timeline-header h3 {
@@ -236,28 +236,24 @@ body {
 }
 
 .toggle-icon {
+    margin-left: auto;
     font-size: 20px;
-    color: #c12c1f;
-    margin-left: 10px;
-    font-weight: bold;
-}
-
-.timeline-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background: #fff;
-    margin-top: 10px;
-    border-radius: 8px;
+    color: #666;
 }
 
 .timeline-item {
-    margin-bottom: 20px;
-    padding-left: 70px;
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+    border-radius: 4px;
 }
 
-.timeline-item.active .timeline-header {
-    background: #f0f0f0;
+.timeline-item.active .timeline-content {
+    max-height: 500px; /* 根据内容调整 */
+    padding: 15px 20px;
+}
+
+.timeline-item.active .toggle-icon {
+    transform: rotate(45deg);
 }
 
 /* 移动端适配 */
