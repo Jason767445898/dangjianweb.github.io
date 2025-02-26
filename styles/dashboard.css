@@ -287,3 +287,88 @@ body {
 .back-btn:hover {
     background: rgba(255, 255, 255, 0.1);
 }
+
+/* 移动端侧边栏样式 */
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        left: -250px;
+        top: 0;
+        height: 100%;
+        width: 250px;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    /* 汉堡菜单按钮 */
+    .menu-toggle {
+        display: block;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        z-index: 1001;
+        background: #c12c1f;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    /* 遮罩层 */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    .overlay.active {
+        display: block;
+    }
+}
+
+/* 时间轴移动端适配 */
+@media (max-width: 768px) {
+    .development-timeline {
+        padding: 10px;
+    }
+
+    .timeline-item {
+        margin-bottom: 15px;
+    }
+
+    .timeline-header {
+        padding: 10px;
+    }
+
+    .timeline-header h3 {
+        font-size: 16px;
+    }
+
+    .timeline-content {
+        padding: 10px;
+    }
+
+    .timeline-content ul {
+        padding-left: 15px;
+    }
+
+    .timeline-content li {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+}
