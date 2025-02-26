@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 阳春河㙟党建网站</title>
+    <link rel="stylesheet" href="styles/personal-center.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="user-info">
+            <img src="picture/userimage.png" alt="用户头像" class="avatar">
+            <span class="username" id="memberUsername"></span>
+            <button onclick="logout()" class="logout-btn">退出登录</button>
+        </div>
+        <ul class="menu">
+            <li><a href="party-study.html">党课学习</a>
+                <ul class="submenu">
+                    <li><a href="party-study.html#theory">全国党性知识</a></li>
+                    <li><a href="party-study.html#local">视频学习知识</a></li>
+                </ul>
+            </li>
+            <li><a href="countrynews.html">资讯了解</a></li>
+            <li><a href="party-member-dashboard.html#development">党员发展</a></li>
+            <li><a href="#" class="active">个人中心</a>
+                <ul class="submenu">
+                    <li><a href="#notifications">我的通知</a></li>
+                    <li><a href="#ai">人工客服</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div class="profile-section">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img src="picture/userimage.png" alt="用户头像">
+                    <button class="change-avatar-btn">更换头像</button>
+                </div>
+                <div class="profile-info">
+                    <h2 id="profileUsername">用户名</h2>
+                    <p class="member-id">党员编号：<span id="memberId">123456</span></p>
+                    <p class="join-date">入党时间：<span id="joinDate">2020-01-01</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>学习统计</h3>
+                <div class="stat-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">已完成课程</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">学习时长(小时)</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98</span>
+                        <span class="stat-label">学习积分</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>我的通知</h3>
+                <div class="notification-list">
+                    <div class="notification-item unread">
+                        <span class="notification-badge">新</span>
+                        <div class="notification-content">
+                            <h4>组织生活会通知</h4>
+                            <p>关于召开2024年第一季度组织生活会的通知</p>
+                            <span class="notification-time">2024-03-20</span>
+                        </div>
+                    </div>
+                    <div class="notification-item">
+                        <div class="notification-content">
+                            <h4>学习任务提醒</h4>
+                            <p>您有一个党课学习任务即将到期</p>
+                            <span class="notification-time">2024-03-18</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>党费缴纳</h3>
+                <div class="dues-info">
+                    <div class="dues-status">
+                        <p>当前状态：<span class="status-text">已缴纳</span></p>
+                        <p>最近缴纳：2024年3月</p>
+                        <p>缴纳金额：￥30.00</p>
+                    </div>
+                    <button class="pay-dues-btn">缴纳党费</button>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>人工客服</h3>
+                <div class="ai-service">
+                    <div class="chat-preview">
+                        <p>有什么可以帮助您？</p>
+                    </div>
+                    <button class="start-chat-btn" onclick="startChat()">开始对话</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 聊天窗口模态框 -->
+    <div id="chatModal" class="modal">
+        <div class="modal-content chat-modal">
+            <div class="chat-header">
+                <h3>人工客服</h3>
+                <span class="close-btn" onclick="closeChat()">&times;</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message system">
+                    您好！我是您的党建助手，请问有什么可以帮您？
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" id="messageInput" placeholder="请输入您的问题...">
+                <button onclick="sendMessage()">发送</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/party-member.js"></script>
+    <script src="js/personal-center.js"></script>
+</body>
+</html> 
