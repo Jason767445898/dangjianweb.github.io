@@ -78,6 +78,67 @@
             color: #fff;
             transition: all 0.3s;
         }
+
+        /* 添加模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 50px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .close-btn:hover {
+            color: #c12c1f;
+        }
+
+        .news-title {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 15px;
+            padding-right: 40px;
+        }
+
+        .news-meta {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-content {
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .news-content p {
+            margin-bottom: 15px;
+        }
     </style>
 </head>
 <body>
@@ -98,9 +159,9 @@
         <section class="section">
             <h2>头条要闻</h2>
             <ul>
-                <li><a href="news-detail.html?title=全市深化作风建设优化营商环境大会召开">全市深化作风建设优化营商环境大会召开</a></li>
-                <li><a href="news-detail.html?title=习近平：健全全面从严治党体系">习近平：健全全面从严治党体系</a></li>
-                <li><a href="news-detail.html?title=中共中央组织部：健全全面从严治党体系">中共中央组织部：健全全面从严治党体系</a></li>
+                <li><a href="#" onclick="showNews('全市深化作风建设优化营商环境大会召开'); return false;">全市深化作风建设优化营商环境大会召开</a></li>
+                <li><a href="#" onclick="showNews('习近平：健全全面从严治党体系'); return false;">习近平：健全全面从严治党体系</a></li>
+                <li><a href="#" onclick="showNews('中共中央组织部：健全全面从严治党体系'); return false;">中共中央组织部：健全全面从严治党体系</a></li>
             </ul>
         </section>
 
@@ -123,9 +184,80 @@
         </section>
     </div>
 
+    <!-- 新闻详情模态框 -->
+    <div id="newsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h1 class="news-title"></h1>
+            <div class="news-meta">
+                <span class="date"></span>
+                <span class="source"></span>
+            </div>
+            <div class="news-content"></div>
+        </div>
+    </div>
+
     <footer class="footer">
         <p>版权所有：中国共产党**市委员会组织部</p>
         
     </footer>
+
+    <script>
+        // 新闻数据
+        const newsData = {
+            "全市深化作风建设优化营商环境大会召开": {
+                title: "全市深化作风建设优化营商环境大会召开",
+                date: "2024-03-15",
+                source: "阳春河㙟党建网",
+                content: `
+                    <p>3月15日，全市深化作风建设优化营商环境大会在市政府召开。会议深入学习贯彻习近平总书记关于作风建设和优化营商环境的重要论述，全面落实省委省政府决策部署，对全市深化作风建设、优化营商环境工作进行再动员再部署。</p>
+                    <p>会议强调，要始终坚持以人民为中心的发展思想，把优化营商环境作为推动高质量发展的重要抓手，以作风建设新成效推动营商环境新提升。</p>
+                `
+            },
+            "习近平：健全全面从严治党体系": {
+                title: "习近平：健全全面从严治党体系",
+                date: "2024-03-14",
+                source: "新华社",
+                content: `
+                    <p>习近平总书记强调，要健全全面从严治党体系，坚持和加强党的全面领导，坚持党要管党、全面从严治党。</p>
+                    <p>要把严的基调、严的措施、严的氛围长期坚持下去，教育引导广大党员、干部特别是领导干部从思想上正本清源、固本培元。</p>
+                `
+            },
+            "中共中央组织部：健全全面从严治党体系": {
+                title: "中共中央组织部：健全全面从严治党体系",
+                date: "2024-03-13",
+                source: "中国组织人事报",
+                content: `
+                    <p>中共中央组织部近日发布关于健全全面从严治党体系的重要文件，强调要把严的基调贯穿始终。</p>
+                    <p>文件指出，要坚持以党的政治建设为统领，以党的思想建设为基础，以党的组织建设为保障，以党的作风建设为抓手，以党的纪律建设为重点，以反腐败斗争为关键，不断提高党的建设质量。</p>
+                `
+            }
+        };
+
+        // 显示新闻详情
+        function showNews(title) {
+            const news = newsData[title];
+            if (news) {
+                document.querySelector('.news-title').textContent = news.title;
+                document.querySelector('.date').textContent = news.date;
+                document.querySelector('.source').textContent = news.source;
+                document.querySelector('.news-content').innerHTML = news.content;
+                document.getElementById('newsModal').style.display = 'block';
+            }
+        }
+
+        // 关闭模态框
+        function closeModal() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        // 点击模态框外部关闭
+        window.onclick = function(event) {
+            const modal = document.getElementById('newsModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
