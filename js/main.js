@@ -2,8 +2,8 @@
 document.querySelectorAll('.section li').forEach(item => {
     item.addEventListener('click', function() {
         const newsTitle = this.textContent;
-        // 这里可以添加跳转到新闻详情页的逻辑
-        window.location.href = `/news-detail.html?title=${encodeURIComponent(newsTitle)}`;
+        // 修改为相对路径
+        window.location.href = `news-detail.html?title=${encodeURIComponent(newsTitle)}`;
     });
 });
 
