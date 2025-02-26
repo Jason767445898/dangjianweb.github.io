@@ -5,13 +5,34 @@ body {
     font-family: "Microsoft YaHei", sans-serif;
 }
 
+/* Logo和标题容器 */
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Logo图片样式 */
+.header-logo {
+    width: 10px;
+    height: 10px;
+    display: block;
+}
+
+/* 标题样式 */
+.logo-title h1 {
+    margin: 10px;
+    font-size: 24px;
+    white-space: nowrap;
+}
+
 .header {
-    background-color: #c12c1f;
-    color: white;
-    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px 20px;
+    background-color: #c12c1f;
+    color: white;
 }
 
 .nav {
@@ -296,18 +317,6 @@ body {
     }
 }
 
-/* Logo和标题容器 */
-.logo-title {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-/* Logo图片样式 */
-.header-logo {
-    width: 50px;
-    height: 50px;
-}
 
 
 
