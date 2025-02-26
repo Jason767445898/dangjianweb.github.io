@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河㙟文化导航</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .news-title {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .carousel-item img {
+            width: 100%; /* 设置宽度为100% */
+            height: 900px; /* 手动设置高度 */
+            object-fit: cover; /* 保持比例并裁剪 */
+            border-radius:5px;/*设置盒子边角弧度*/
+            opacity: 0.9;/*设置透明状态*/
+        }
+        video{
+            position:fixed;
+            right:0;
+            bottom:0;
+            min-width:100%;
+            min-height:100%;
+            width:auto;
+            height:auto;
+            z-index:-1;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+<video id="myVideo" autoplay muted loop poster="https://qq-web.cdn-go.cn/monorepo/3ccce5a6/zc.qq.com_v3/assets/img/img-bg@2x.png">
+    <source src="https://qq-web.cdn-go.cn/monorepo/3ccce5a6/zc.qq.com_v3/assets/img/bg-video.webm" type="video/webm">
+    <source src="https://qq-web.cdn-go.cn/monorepo/3ccce5a6/zc.qq.com_v3/assets/img/bg-video.mp4" type="video/mp4">
+</video>
+<div class="container">
+    <h1 class="news-title" style="font-family:SimSun;">河㙟文化导航</h1>
+
+    <div id="newsCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="宣传4.png" class="d-block w-100 img-fluid" alt="新闻1">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="宣传5.png" class="d-block w-100 img-fluid" width="100%" height="600px" alt="新闻2">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="宣传6.png" class="d-block w-100 img-fluid" alt="新闻3">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="宣传7.png" class="d-block w-100 img-fluid" alt="新闻3">
+                <div class="carousel-caption d-none d-md-block">
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#newsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">上一页</span>
+        </a>
+        <a class="carousel-control-next" href="#newsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">下一页</span>
+        </a>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
