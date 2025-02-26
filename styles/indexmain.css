@@ -1,0 +1,268 @@
+/* 基础样式 */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", sans-serif;
+}
+
+.header {
+    background-color: #c12c1f;
+    color: white;
+    padding: 10px 0;
+}
+
+.nav {
+    background-color: #d6362b;
+    padding: 10px 0;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.nav li {
+    margin: 0 15px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+/* 主要内容布局 */
+.main-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 区块通用样式 */
+.section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.section h2 {
+    color: #c12c1f;
+    border-bottom: 2px solid #c12c1f;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* 新闻项样式 */
+.news-item {
+    display: flex;
+    align-items: start;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+}
+
+.news-image {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 4px;
+}
+
+.news-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.news-content p {
+    color: #666;
+    margin: 0 0 10px 0;
+    line-height: 1.6;
+}
+
+.news-meta {
+    color: #999;
+    font-size: 14px;
+}
+
+/* 通知列表样式 */
+.notice-list li {
+    padding: 12px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.notice-list li:last-child {
+    border-bottom: none;
+}
+
+.notice-date {
+    float: right;
+    color: #999;
+}
+
+/* 专题项样式 */
+.topic-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.topic-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    background: #c12c1f;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* 快速链接样式 */
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.quick-link {
+    background: #f5f5f5;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.quick-link:hover {
+    background: #c12c1f;
+    color: white;
+}
+
+/* 页脚样式 */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* 登录按钮样式 */
+.login-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    padding: 8px 15px;
+    background-color: #fff;
+    color: #c12c1f;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    background-color: #c12c1f;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 8px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-btn:hover {
+    color: #c12c1f;
+}
+
+.news-title {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 15px;
+    padding-right: 40px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .nav li {
+        margin: 5px 0;
+    }
+    
+    .news-item {
+        flex-direction: column;
+    }
+    
+    .news-image {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .login-btn {
+        position: static;
+        display: block;
+        margin: 10px auto;
+        width: fit-content;
+    }
+}
