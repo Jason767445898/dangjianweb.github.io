@@ -41,15 +41,127 @@
         }
 
         .main-content {
+            max-width: 1200px;
+            margin: 20px auto;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 2fr 1fr;
             gap: 20px;
-            padding: 20px;
+            padding: 0 20px;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .section {
-            border: 1px solid #ddd;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+
+        .section h2 {
+            color: #c12c1f;
+            border-bottom: 2px solid #c12c1f;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .news-item {
+            display: flex;
+            align-items: start;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-image {
+            width: 180px;
+            height: 120px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .news-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+        }
+
+        .news-content p {
+            color: #666;
+            margin: 0 0 10px 0;
+            line-height: 1.6;
+        }
+
+        .news-meta {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .notice-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .notice-list li:last-child {
+            border-bottom: none;
+        }
+
+        .notice-date {
+            float: right;
+            color: #999;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .topic-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            background: #c12c1f;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .quick-link {
+            background: #f5f5f5;
             padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .quick-link:hover {
+            background: #c12c1f;
+            color: white;
         }
 
         .footer {
@@ -156,32 +268,99 @@
     </nav>
 
     <div class="main-content">
-        <section class="section">
-            <h2>头条要闻</h2>
-            <ul>
-                <li><a href="#" onclick="showNews('全市深化作风建设优化营商环境大会召开'); return false;">全市深化作风建设优化营商环境大会召开</a></li>
-                <li><a href="#" onclick="showNews('习近平：健全全面从严治党体系'); return false;">习近平：健全全面从严治党体系</a></li>
-                <li><a href="#" onclick="showNews('中共中央组织部：健全全面从严治党体系'); return false;">中共中央组织部：健全全面从严治党体系</a></li>
-            </ul>
-        </section>
+        <div class="left-column">
+            <section class="section">
+                <h2>头条要闻</h2>
+                <div class="news-item">
+                    <img src="images/news1.jpg" alt="深化作风建设会议" class="news-image">
+                    <div class="news-content">
+                        <h3><a href="#" onclick="showNews('全市深化作风建设优化营商环境大会召开'); return false;">全市深化作风建设优化营商环境大会召开</a></h3>
+                        <p>3月15日，全市深化作风建设优化营商环境大会在市政府召开。会议深入学习贯彻习近平总书记重要论述，全面落实省委省政府决策部署...</p>
+                        <div class="news-meta">
+                            <span>2024-03-15</span>
+                            <span>阅读量：2389</span>
+                            <span>来源：阳春河㙟党建网</span>
+                        </div>
+                    </div>
+                </div>
 
-        <section class="section">
-            <h2>通知公告</h2>
-            <ul>
-                <li>2024年度考试录用公务员公告</li>
-                <li>阳春河㙟委党校公开招聘公告</li>
-                <li>南京市公务员考试相关通知</li>
-            </ul>
-        </section>
+                <div class="news-item">
+                    <img src="images/news2.jpg" alt="习近平重要讲话" class="news-image">
+                    <div class="news-content">
+                        <h3><a href="#" onclick="showNews('习近平：健全全面从严治党体系'); return false;">习近平：健全全面从严治党体系</a></h3>
+                        <p>习近平总书记强调，要健全全面从严治党体系，坚持和加强党的全面领导，坚持党要管党、全面从严治党...</p>
+                        <div class="news-meta">
+                            <span>2024-03-14</span>
+                            <span>阅读量：3526</span>
+                            <span>来源：新华社</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        <section class="section">
-            <h2>专题专栏</h2>
-            <ul>
-                <li>学习贯彻党的二十届三中全会精神</li>
-                <li>党纪学习教育</li>
-                <li>抓党建促乡村振兴</li>
-            </ul>
-        </section>
+            <section class="section">
+                <h2>通知公告</h2>
+                <ul class="notice-list">
+                    <li>
+                        <span class="notice-date">2024-03-20</span>
+                        <a href="#">2024年度考试录用公务员公告</a>
+                    </li>
+                    <li>
+                        <span class="notice-date">2024-03-18</span>
+                        <a href="#">阳春河㙟委党校2024年公开招聘公告</a>
+                    </li>
+                    <li>
+                        <span class="notice-date">2024-03-15</span>
+                        <a href="#">关于开展2024年党员干部在线培训的通知</a>
+                    </li>
+                    <li>
+                        <span class="notice-date">2024-03-12</span>
+                        <a href="#">2024年党建工作要点</a>
+                    </li>
+                    <li>
+                        <span class="notice-date">2024-03-10</span>
+                        <a href="#">关于开展党史学习教育的通知</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div class="right-column">
+            <section class="section">
+                <h2>专题专栏</h2>
+                <div class="topic-item">
+                    <div class="topic-icon">学</div>
+                    <div class="topic-content">
+                        <h3>学习贯彻党的二十届三中全会精神</h3>
+                        <p>深入学习贯彻习近平新时代中国特色社会主义思想</p>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <div class="topic-icon">教</div>
+                    <div class="topic-content">
+                        <h3>党纪学习教育</h3>
+                        <p>加强党性修养，提高政治觉悟</p>
+                    </div>
+                </div>
+                <div class="topic-item">
+                    <div class="topic-icon">振</div>
+                    <div class="topic-content">
+                        <h3>抓党建促乡村振兴</h3>
+                        <p>以党建引领乡村振兴战略实施</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2>快速通道</h2>
+                <div class="quick-links">
+                    <a href="#" class="quick-link">党费缴纳</a>
+                    <a href="#" class="quick-link">组织关系转接</a>
+                    <a href="#" class="quick-link">在线学习</a>
+                    <a href="#" class="quick-link">资料下载</a>
+                </div>
+            </section>
+        </div>
     </div>
 
     <!-- 新闻详情模态框 -->
