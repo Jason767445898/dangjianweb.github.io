@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>党课学习 - 阳春河㙟党建网站</title>
+    <link rel="stylesheet" href="styles/party-study.css">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="user-info">
+            <img src="picture/userimage.png" alt="用户头像" class="avatar">
+            <span class="username" id="memberUsername"></span>
+            <button onclick="logout()" class="logout-btn">退出登录</button>
+        </div>
+        <ul class="menu">
+            <li><a href="#study" class="active">党课学习</a>
+                <ul class="submenu">
+                    <li><a href="#theory">全国党性知识</a></li>
+                    <li><a href="#local">视频学习知识</a></li>
+                </ul>
+            </li>
+            <li><a href="countrynews.html">资讯了解</a></li>
+            <li><a href="party-member-dashboard.html#development">党员发展</a></li>
+            <li><a href="#messages">我的消息</a>
+                <ul class="submenu">
+                    <li><a href="#notifications">通知</a></li>
+                    <li><a href="#ai">人工客服</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div class="study-section">
+            <h2 class="section-title">推荐学习</h2>
+            <div class="course-grid">
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="picture/会晤走红毯.jpg" alt="习近平新时代中国特色社会主义思想">
+                        <span class="course-duration">2小时30分钟</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>习近平新时代中国特色社会主义思想</h3>
+                        <p>深入学习贯彻习近平新时代中国特色社会主义思想的重要内容</p>
+                        <div class="course-meta">
+                            <span class="course-progress">已学习: 0%</span>
+                            <button class="start-btn" onclick="startCourse(1)">开始学习</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="picture/红色革命北背景.jpg" alt="党的二十大精神解读">
+                        <span class="course-duration">1小时45分钟</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>党的二十大精神解读</h3>
+                        <p>全面解读党的二十大报告核心要义和重要论述</p>
+                        <div class="course-meta">
+                            <span class="course-progress">已学习: 0%</span>
+                            <button class="start-btn" onclick="startCourse(2)">开始学习</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="picture/首页2.jpg" alt="党史学习教育">
+                        <span class="course-duration">2小时</span>
+                    </div>
+                    <div class="course-info">
+                        <h3>党史学习教育</h3>
+                        <p>学习百年党史，汲取奋进力量</p>
+                        <div class="course-meta">
+                            <span class="course-progress">已学习: 0%</span>
+                            <button class="start-btn" onclick="startCourse(3)">开始学习</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="study-section">
+            <h2 class="section-title">最近学习</h2>
+            <div class="recent-list">
+                <div class="recent-item">
+                    <div class="recent-info">
+                        <h3>党的纪律建设</h3>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 60%"></div>
+                        </div>
+                        <span class="progress-text">已完成 60%</span>
+                    </div>
+                    <button class="continue-btn">继续学习</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 学习内容模态框 -->
+    <div id="studyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeStudyModal()">&times;</span>
+            <h2 id="courseTitle"></h2>
+            <div id="courseContent"></div>
+            <div class="study-controls">
+                <button onclick="completeCourse()">完成学习</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/party-member.js"></script>
+    <script src="js/party-study.js"></script>
+</body>
+</html> 

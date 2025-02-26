@@ -210,8 +210,6 @@ body {
     }
 } 
 
-/* ... existing code ... */
-
 /* 时间线项样式更新 */
 .timeline-header {
     display: flex;
