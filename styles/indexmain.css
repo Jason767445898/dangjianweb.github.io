@@ -14,14 +14,14 @@ body {
 
 /* Logo图片样式 */
 .header-logo {
-    width: 15px;
-    height: 15px;
+    width: 30px;
+    height: 30px;
     display: block;
 }
 
 /* 标题样式 */
 .logo-title h1 {
-    margin: 10px;
+    margin: 15px;
     font-size: 24px;
     white-space: nowrap;
 }
