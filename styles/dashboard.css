@@ -21,6 +21,7 @@ body {
     border-bottom: 1px solid rgba(255,255,255,0.2);
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
 }
 
@@ -28,12 +29,15 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    margin-bottom: 10px;
+    margin: 0 auto;
+    display: block;
 }
 
 .username {
-    display: block;
+    color: white;
+    font-size: 16px;
     margin: 10px 0;
+    display: block;
 }
 
 .logout-btn {
@@ -43,6 +47,7 @@ body {
     padding: 5px 15px;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
 }
 
 .menu {
