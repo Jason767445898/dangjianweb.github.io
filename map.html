@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html style="height:100%;" lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>河㙟地图</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 地图容器 */
+        .map-container {
+            position: relative;
+            overflow: hidden;/*防止内容溢出*/
+        }
+
+        /* 背景地图 */
+        .map-image {
+            width: 100%;
+            height: 100%;
+            obeject-fit:contain;
+            obeject-position:center center;
+        }
+
+        /* 可点击的文字标签 */
+        .location-label {
+            position: absolute;
+            cursor: pointer;
+            color: #333;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            transition: all 0.3s;
+        }
+
+        .location-label:hover {
+            color: #007bff;
+            transform: scale(1.1);
+        }
+
+        /* 自定义透明模态框 */
+        .modal-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column" style="height:100vh;margin:0;">
+    <div class="map-container" style="flex:1;min-height:0;">
+        <!-- 替换为你的地图图片路径 -->
+        <img src="picture/map.jpg" class="map-image" alt="地图背景">
+
+        <!-- 地点标签 - 需要手动设置坐标 -->
+        <div class="location-label" style="left: 45.2%; top: 64.5%;"data-location="1">
+            云帘村
+        </div>
+        <div class="location-label" style="left: 48.5%; top: 53%;" data-location="2">
+            大塘村
+        </div>
+        <div class="location-label" style="left: 53.7%; top: 50%;" data-location="3">
+            新竹村
+        </div>
+        <div class="location-label" style="left: 56.4%; top: 48.2%;" data-location="4">
+            社塘村
+        </div>
+        <div class="location-label" style="left: 60.5%; top: 48.8%;" data-location="5">
+            阳三村
+        </div>
+        <div class="location-label" style="left: 58.1%; top: 62%;" data-location="6">
+            大竹村
+        </div>
+        <div class="location-label" style="left: 62.1%; top: 37.3%;" data-location="1">
+            罗阳村
+        </div>
+        <div class="location-label" style="left: 66%; top: 26.8%;" data-location="1">
+            司马村
+        </div>
+        <div class="location-label" style="left: 65.5%; top: 50.8%;" data-location="1">
+            凌霄村
+        </div>
+        <div class="location-label" style="left: 71%; top: 32.6%;" data-location="1">
+            石忽村
+        </div>
+        <div class="location-label" style="left: 68.7%; top: 19.9%;" data-location="1">
+            新阳村
+        </div>
+        <div class="location-label" style="left: 72%; top: 50.6%;" data-location="1">
+            中和村
+        </div>
+        <div class="location-label" style="left: 76.8%; top: 51%;" data-location="1">
+            中联村
+        </div>
+        <div class="location-label" style="left: 72.3%; top: 64.2%;" data-location="1">
+            河㙟村
+        </div>
+        <!-- 重复添加其他15个地点... -->
+    </div>
+
+<!-- 模态框模板 -->
+<div class="modal fade" id="locationModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">地点名称</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>这里是地点详细信息...</p >
+                <p>实时数据：<span id="location-data">加载中...</span></p >
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap 5 JS 及其依赖 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // 初始化交互功能
+    $(document).ready(function() {
+        // 点击地点标签时触发
+        $('.location-label').click(function() {
+            const locationId = $(this).data('location');
+            const modal = $('#locationModal');
+
+            // 这里可以添加AJAX请求获取实时数据
+            // fetchLocationData(locationId).then(data => {...});
+
+            // 更新模态框内容
+            modal.find('.modal-title').text('地点 ' + locationId);
+            modal.find('#location-data').text('2023-10-01 数据：' + Math.random().toFixed(2));
+
+            // 显示模态框
+            new bootstrap.Modal(modal.get(0)).show();
+        });
+    });
+
+    // 示例数据获取函数
+    async function fetchLocationData(id) {
+        // 实际使用时替换为你的API接口
+        const response = await fetch(`/api/locations/${id}`);
+        return response.json();
+    }
+</script>
+
+</body>
+</html>
