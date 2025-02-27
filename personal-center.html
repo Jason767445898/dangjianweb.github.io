@@ -102,42 +102,20 @@
             <div class="info-card">
                 <h3>人工客服</h3>
                 <div class="ai-service">
-                    <div class="chat-preview">
-                        <p>有什么可以帮助您？</p>
+                    <div class="service-content">
+                        <p>工作时间：周一至周五 9:00-17:00</p>
+                        <p>服务电话：<a href="tel:0662-7870805" class="phone-number">0662-7870805</a></p>
                     </div>
-                    <button class="start-chat-btn" onclick="startChat()">开始对话</button>
+                    <button class="call-btn" onclick="window.location.href='tel:0662-7870805'">
+                        立即拨打
+                    </button>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- 添加聊天按钮 -->
-    <button id="chatButton" class="chat-toggle-btn">
-        <img src="picture/chat-icon.png" alt="聊天" class="chat-icon">
-    </button>
-
-    <!-- 聊天窗口模态框 -->
-    <div id="chatModal" class="modal">
-        <div class="modal-content chat-modal">
-            <div class="chat-header">
-                <h3>人工客服</h3>
-                <span class="close-btn" onclick="closeChat()">&times;</span>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message system">
-                    您好！我是您的党建助手，请问有什么可以帮您？
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" id="messageInput" placeholder="请输入您的问题...">
-                <button onclick="sendMessage()">发送</button>
-            </div>
-        </div>
-    </div>
-
     <script src="js/party-member.js"></script>
     <script src="js/personal-center.js"></script>
     <script src="js/mobile-nav.js"></script>
-    <script src="js/chat.js"></script>
 </body>
 </html> 

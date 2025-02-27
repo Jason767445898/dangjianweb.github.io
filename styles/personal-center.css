@@ -161,91 +161,39 @@
     cursor: pointer;
 }
 
-/* AI客服 */
-.ai-service {
+/* 人工客服样式 */
+.service-content {
     text-align: center;
-}
-
-.chat-preview {
-    background: #f9f9f9;
     padding: 15px;
+    background: #f9f9f9;
     border-radius: 8px;
     margin-bottom: 15px;
 }
 
-.start-chat-btn {
+.service-content p {
+    margin: 10px 0;
+    color: #666;
+}
+
+.phone-number {
+    color: #c12c1f;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.call-btn {
     background: #c12c1f;
     color: white;
     border: none;
-    padding: 8px 20px;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    font-size: 16px;
 }
 
-/* 聊天模态框 */
-.chat-modal {
-    display: flex;
-    flex-direction: column;
-    height: 500px;
-}
-
-.chat-header {
-    padding: 15px;
-    background: #c12c1f;
-    color: white;
-    border-radius: 8px 8px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.chat-messages {
-    flex: 1;
-    padding: 15px;
-    overflow-y: auto;
-    background: #f5f5f5;
-}
-
-.message {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    max-width: 80%;
-}
-
-.message.system {
-    background: #fff;
-    margin-left: 0;
-}
-
-.message.user {
-    background: #c12c1f;
-    color: white;
-    margin-left: auto;
-}
-
-.chat-input {
-    display: flex;
-    padding: 15px;
-    gap: 10px;
-    background: white;
-    border-top: 1px solid #eee;
-}
-
-.chat-input input {
-    flex: 1;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.chat-input button {
-    background: #c12c1f;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 4px;
-    cursor: pointer;
+.call-btn:hover {
+    background: #d6362b;
 }
 
 /* 响应式设计 */
