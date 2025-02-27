@@ -140,37 +140,115 @@
         footer a:hover {
             opacity: 0.8;
         }
+
+        /* 头部样式 */
+        .header {
+            background-color: #c12c1f;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .login-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 导航栏样式 */
+        .nav {
+            background-color: #a61c11;
+            padding: 0.5rem 0;
+        }
+
+        .nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .nav a {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
 <body class="d-flex flex-column" style="height:100vh;margin:0;">
-    <!-- 添加导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #c12c1f;">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="picture/icons8-锤子和镰刀-96.png" alt="党建logo" height="30" class="d-inline-block align-text-top">
-                阳春河㙟党建网站
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">首页</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="countrynews.html">了解河㙟</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="travel.html">河㙟文旅</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="map.html">地图介绍</a>
-                    </li>
-                </ul>
-            </div>
+    <header class="header">
+        <div class="logo-title">
+            <img src="picture/icons8-锤子和镰刀-96.png" alt="党建logo" class="header-logo">
+            <h1>阳春河㙟党建网站</h1>
         </div>
+       
+    </header>
+
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="countrynews.html">了解河㙟</a></li>
+            <li><a href="travel.html">河㙟文旅</a></li>
+            <li><a href="map.html" class="active">地图介绍</a></li>
+        </ul>
     </nav>
 
     <div class="map-container" style="flex:1;min-height:0;">
