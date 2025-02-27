@@ -350,65 +350,87 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // 初始化交互功能
+    // 添加更详细的错误处理和调试信息
+    async function fetchLocationData(id) {
+        try {
+            console.log(`正在请求数据，ID: ${id}`);
+            const response = await fetch(`http://localhost:128/api/locations/${id}`);
+            console.log('API 响应状态:', response.status);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            console.log('获取的数据:', data);
+            return data;
+        } catch (error) {
+            console.error('详细错误信息:', error);
+            alert('获取数据失败，请检查控制台了解详情');
+            return { 
+                description: '无法获取描述信息\n' + error.message, 
+                data: '暂无数据' 
+            };
+        }
+    }
+
+    // 修改点击事件处理
     $(document).ready(function() {
-        // 点击地点标签时触发
         $('.location-label').click(function() {
             const locationId = $(this).data('location');
+            const locationName = $(this).text().trim();
+            console.log(`点击了位置: ${locationName}, ID: ${locationId}`);
+            
             const modal = $('#locationModal');
-
-            // 获取并更新详细信息
-            fetchLocationData(locationId).then(data => {
-                // 更新模态框内容
-                modal.find('.modal-title').text($(this).text()); // 显示村庄名称
-            // 分割描述信息
-            const parts = {
-                traffic: '',
-                population: '',
-                party: ''
-            };
-            if (data.description) {
-                const lines = data.description.split('\n');
-                let currentPart = '';
-                lines.forEach(line => {
-                    if (line.startsWith('【区位交通】')) {
-                        currentPart = 'traffic';
-                    } else if (line.startsWith('【区划人口】')) {
-                        currentPart = 'population';
-                    } else if (line.startsWith('【党组织情况】')) {
-                        currentPart = 'party';
-                    } else if (currentPart) {
-                        parts[currentPart] += line + '\n';
-                    }
-                });
-            }
-
-            modal.find('#location-traffic').text(parts.traffic.trim()); // 显示区位交通信息
-            modal.find('#location-population').text(parts.population.trim()); // 显示区划人口信息
-            modal.find('#location-party').text(parts.party.trim()); // 显示党组织情况信息
-            modal.find('#location-data').text('2025-02-27 数据：' + data.data); // 显示实时数据
-//显示模态框
+            
+            // 先显示加载状态
+            modal.find('.modal-title').text(locationName);
+            modal.find('#location-traffic').text('正在加载...');
+            modal.find('#location-population').text('正在加载...');
+            modal.find('#location-party').text('正在加载...');
+            modal.find('#location-data').text('正在加载...');
+            
+            // 显示模态框
             new bootstrap.Modal(modal.get(0)).show();
-        }).catch(error => {
-                console.error('获取数据时出错：', error);
+
+            // 获取数据
+            fetchLocationData(locationId).then(data => {
+                console.log('开始处理数据');
+                // 分割描述信息
+                const parts = {
+                    traffic: '',
+                    population: '',
+                    party: ''
+                };
+                if (data.description) {
+                    const lines = data.description.split('\n');
+                    let currentPart = '';
+                    lines.forEach(line => {
+                        if (line.startsWith('【区位交通】')) {
+                            currentPart = 'traffic';
+                        } else if (line.startsWith('【区划人口】')) {
+                            currentPart = 'population';
+                        } else if (line.startsWith('【党组织情况】')) {
+                            currentPart = 'party';
+                        } else if (currentPart) {
+                            parts[currentPart] += line + '\n';
+                        }
+                    });
+                }
+
+                modal.find('#location-traffic').text(parts.traffic.trim()); // 显示区位交通信息
+                modal.find('#location-population').text(parts.population.trim()); // 显示区划人口信息
+                modal.find('#location-party').text(parts.party.trim()); // 显示党组织情况信息
+                modal.find('#location-data').text('2025-02-27 数据：' + data.data); // 显示实时数据
+            }).catch(error => {
+                console.error('处理数据时出错：', error);
+                modal.find('#location-traffic').text('加载失败');
+                modal.find('#location-population').text('加载失败');
+                modal.find('#location-party').text('加载失败');
+                modal.find('#location-data').text('加载失败');
             });
         });
     });
-
-    // 示例数据获取函数
-    async function fetchLocationData(id) {
-        try {
-            // 实际使用时替换为你的API接口
-            const response = await fetch(`http://localhost:128/api/locations/${id}`);
-            if (!response.ok) {
-                throw new Error('网络请求失败');
-            }
-            return response.json();
-        } catch (error) {
-            console.error('获取数据时出错：', error);
-            return { description: '无法获取描述信息', data: '暂无数据' };
-        }
-    }
 </script>
 </body>
 </html>

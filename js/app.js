@@ -117,11 +117,27 @@ const locations = {
 // 提供地点数据的 API 接口
 app.get('/api/locations/:id', (req, res) => {
     const id = parseInt(req.params.id);
+    console.log(`收到请求，ID: ${id}`);
+    
     if (locations[id]) {
+        console.log(`找到数据: ${JSON.stringify(locations[id])}`);
         res.json(locations[id]);
     } else {
-        res.status(404).json({ description: '无法获取描述信息', data: '暂无数据' });
+        console.log(`未找到 ID ${id} 的数据`);
+        res.status(404).json({ 
+            description: '无法获取描述信息', 
+            data: '暂无数据' 
+        });
     }
+});
+
+// 添加错误处理中间件
+app.use((err, req, res, next) => {
+    console.error('服务器错误:', err);
+    res.status(500).json({ 
+        description: '服务器错误', 
+        data: '暂无数据' 
+    });
 });
 
 // 启动服务器并添加错误处理
