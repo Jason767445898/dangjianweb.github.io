@@ -225,7 +225,7 @@ body {
 }
 
 .footer-phone:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 /* 登录按钮样式 */
