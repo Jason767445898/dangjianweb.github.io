@@ -2,7 +2,19 @@ const express = require('express');
 const app = express();
 const port = 128;
 const cors = require('cors');
-app.use(cors());
+
+// 确保 CORS 中间件在所有路由之前
+app.use(cors({
+    origin: '*', // 在开发环境允许所有来源，生产环境应该设置具体域名
+    methods: ['GET'], // 只允许 GET 请求
+    allowedHeaders: ['Content-Type']
+}));
+
+// 测试路由
+app.get('/test', (req, res) => {
+    res.json({ message: '服务器正在运行' });
+});
+
 // 模拟地点数据
 const locations = {
     1: { description: '【区位交通】\n' +
@@ -112,7 +124,13 @@ app.get('/api/locations/:id', (req, res) => {
     }
 });
 
-// 启动服务器
+// 启动服务器并添加错误处理
 app.listen(port, () => {
     console.log(`服务器运行在 http://localhost:${port}`);
+}).on('error', (err) => {
+    if (err.code === 'EADDRINUSE') {
+        console.error(`端口 ${port} 已被占用`);
+    } else {
+        console.error('启动服务器时发生错误:', err);
+    }
 });

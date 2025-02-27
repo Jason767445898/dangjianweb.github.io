@@ -7,39 +7,138 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* 地图容器 */
-        .map-container {
-            position: relative;
-            overflow: hidden;/*防止内容溢出*/
+        /* 全局样式 */
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            color: #333;
         }
 
-        /* 背景地图 */
+        /* 导航栏样式优化 */
+        .navbar {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #fff;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 80%;
+        }
+
+        /* 地图容器样式优化 */
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            background: #f5f5f5;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
         .map-image {
             width: 100%;
             height: 100%;
             object-fit: contain;
             object-position: center center;
+            transition: transform 0.3s;
         }
 
-        /* 可点击的文字标签 */
+        /* 地点标签样式优化 */
         .location-label {
             position: absolute;
             cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.9);
             color: #333;
-            font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
-            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            z-index: 1;
         }
 
         .location-label:hover {
-            color: #007bff;
+            color: #c12c1f;
             transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
-        /* 自定义透明模态框 */
+        /* 模态框样式优化 */
         .modal-content {
             background-color: rgba(255, 255, 255, 0.95);
+            border: none;
             border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-header {
+            border-bottom: 2px solid #f0f0f0;
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            color: #c12c1f;
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .modal-body h6 {
+            color: #c12c1f;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .modal-body p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            text-align: justify;
+            color: #666;
+        }
+
+        /* 页脚样式优化 */
+        footer {
+            background-color: #c12c1f;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        footer p {
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        footer a {
+            color: #fff !important;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        footer a:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
