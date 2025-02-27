@@ -17,8 +17,8 @@
         .map-image {
             width: 100%;
             height: 100%;
-            obeject-fit:contain;
-            obeject-position:center center;
+            object-fit: contain;
+            object-position: center center;
         }
 
         /* 可点击的文字标签 */
@@ -45,6 +45,35 @@
 </head>
 
 <body class="d-flex flex-column" style="height:100vh;margin:0;">
+    <!-- 添加导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #c12c1f;">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="picture/icons8-锤子和镰刀-96.png" alt="党建logo" height="30" class="d-inline-block align-text-top">
+                阳春河㙟党建网站
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="countrynews.html">了解河㙟</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="travel.html">河㙟文旅</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="map.html">地图介绍</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="map-container" style="flex:1;min-height:0;">
         <!-- 替换为你的地图图片路径 -->
         <img src="picture/map.jpg" class="map-image" alt="地图背景">
@@ -94,6 +123,12 @@
         </div>
         <!-- 重复添加其他15个地点... -->
     </div>
+
+    <!-- 添加页脚 -->
+    <footer class="text-center py-3" style="background-color: #c12c1f; color: white;">
+        <p class="mb-1">版权所有：中国共产党阳春市委员会组织部</p>
+        <p class="mb-0">联系电话：<a href="tel:0662-7870805" style="color: #4e9eff; text-decoration: none;">0662-7870805</a></p>
+    </footer>
 
     <style>
         /* 设置模态框背景为半透明 */
