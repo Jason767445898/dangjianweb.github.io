@@ -82,30 +82,6 @@
             color: white;
         }
 
-       
-
-        /* 添加标签连接线 */
-        .location-label::before {
-            content: '';
-            position: absolute;
-            width: 15px;
-            height: 1px;
-            background: rgba(0, 0, 0, 0.3);
-            top: 50%;
-        }
-
-        /* 左侧标签的连接线 */
-        .location-label[id^="label-yunlian"]::before,
-        .location-label[id^="label-datang"]::before {
-            right: -15px;
-        }
-
-        /* 右侧标签的连接线 */
-        .location-label[id^="label-zhonglian"]::before,
-        .location-label[id^="label-helang"]::before {
-            left: -15px;
-        }
-
         /* 响应式调整 */
         @media (max-width: 768px) {
             .location-label {
