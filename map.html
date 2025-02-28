@@ -1,250 +1,11 @@
 <!DOCTYPE html>
-<html style="height:100%;" lang="zh-CN">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>河㙟地图</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>地图介绍 - 阳春河㙟党建网站</title>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
-    <style>
-        /* 全局样式 */
-        body {
-            font-family: "Microsoft YaHei", sans-serif;
-            color: #333;
-        }
-
-        /* 导航栏样式优化 */
-        .navbar {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-brand {
-            font-weight: bold;
-        }
-
-        .nav-link {
-            position: relative;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s;
-        }
-
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: #fff;
-            transition: all 0.3s;
-            transform: translateX(-50%);
-        }
-
-        .nav-link:hover:after,
-        .nav-link.active:after {
-            width: 80%;
-        }
-
-        /* 地图容器样式优化 */
-        .map-container {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            background: #f5f5f5;
-        }
-
-        .map-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* 地点标签基础样式 */
-        .location-label {
-            position: absolute;
-            background: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 1;
-            white-space: nowrap;  /* 防止文字换行 */
-        }
-
-        /* 标签悬停效果 */
-        .location-label:hover {
-            transform: scale(1.1);
-            z-index: 2;
-            background: #c12c1f;
-            color: white;
-        }
-
-        /* 响应式调整 */
-        @media (max-width: 768px) {
-            .location-label {
-                font-size: 12px;
-                padding: 2px 6px;
-            }
-            
-            .location-label::before {
-                width: 10px;
-            }
-        }
-
-        /* 模态框样式优化 */
-        .modal-content {
-            background-color: rgba(255, 255, 255, 0.95);
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .modal-header {
-            border-bottom: 2px solid #f0f0f0;
-            padding: 1.5rem;
-        }
-
-        .modal-title {
-            color: #c12c1f;
-            font-weight: bold;
-        }
-
-        .modal-body {
-            padding: 1.5rem;
-        }
-
-        .modal-body h6 {
-            color: #c12c1f;
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        .modal-body p {
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            text-align: justify;
-            color: #666;
-        }
-
-        /* 页脚样式优化 */
-        footer {
-            background-color: #c12c1f;
-            color: white;
-            padding: 1rem 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        footer p {
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        footer a {
-            color: #fff !important;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        footer a:hover {
-            opacity: 0.8;
-        }
-
-        /* 头部样式 */
-        .header {
-            background-color: #c12c1f;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-        }
-
-        .logo-title {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .header-logo {
-            height: 40px;
-            width: auto;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .login-btn {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .login-btn:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        /* 导航栏样式 */
-        .nav {
-            background-color: #a61c11;
-            padding: 0.5rem 0;
-        }
-
-        .nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-
-        .nav a {
-            color: white;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .nav a:hover,
-        .nav a.active {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .header {
-                padding: 1rem;
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-
-            .nav ul {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-
-            .nav a {
-                display: block;
-                width: 100%;
-                text-align: center;
-            }
-        }
-    </style>
-    <script src="lib/jquery.min.js"></script>
-    <script src="lib/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/map.css">
 </head>
 
 <body class="d-flex flex-column" style="height:100vh;margin:0;">
@@ -253,7 +14,6 @@
             <img src="picture/icons8-锤子和镰刀-96.png" alt="党建logo" class="header-logo">
             <h1>阳春河㙟党建网站</h1>
         </div>
-       
     </header>
 
     <nav class="nav">
@@ -267,179 +27,51 @@
 
     <div class="map-container">
         <img src="picture/map.jpg" alt="河㙟地图" class="map-image">
-
-                <!-- 地点标签 - 需要手动设置坐标 -->
-                <div class="location-label" style="left: 45.2%; top: 64.5%;"data-location="1">
-                    云帘村
-                </div>
-                <div class="location-label" style="left: 48.5%; top: 53%;" data-location="2">
-                    大塘村
-                </div>
-                <div class="location-label" style="left: 50%; top: 49.5%;" data-location="3">
-                    新竹村
-                </div>
-                <div class="location-label" style="left: 56.4%; top: 48.2%;" data-location="4">
-                    社塘村
-                </div>
-                <div class="location-label" style="left: 60.5%; top: 42.8%;" data-location="5">
-                    阳三村
-                </div>
-                <div class="location-label" style="left: 58.1%; top: 62%;" data-location="6">
-                    大竹村
-                </div>
-                <div class="location-label" style="left: 62.1%; top: 37.3%;" data-location="7">
-                    罗阳村
-                </div>
-                <div class="location-label" style="left: 66%; top: 26.8%;" data-location="8">
-                    司马村
-                </div>
-                <div class="location-label" style="left: 65.5%; top: 50.8%;" data-location="9">
-                    凌霄村
-                </div>
-                <div class="location-label" style="left: 71%; top: 32.6%;" data-location="10">
-                    石忽村
-                </div>
-                <div class="location-label" style="left: 68.7%; top: 19.9%;" data-location="11">
-                    新阳村
-                </div>
-                <div class="location-label" style="left: 72%; top: 50.6%;" data-location="12">
-                    中和村
-                </div>
-                <div class="location-label" style="left: 76.8%; top: 51%;" data-location="13">
-                    中联村
-                </div>
-                <div class="location-label" style="left: 72.3%; top: 64.2%;" data-location="14">
-                    河㙟村
-                </div>
-                <!-- 重复添加其他15个地点... -->
-        
-        
-       
+        <!-- 地点标签 -->
+        <div class="location-label" style="left: 45.2%; top: 64.5%;" data-location="1">云帘村</div>
+        <div class="location-label" style="left: 48.5%; top: 53%;" data-location="2">大塘村</div>
+        <div class="location-label" style="left: 54%; top: 49.5%;" data-location="3">新竹村</div>
+        <div class="location-label" style="left: 56.4%; top: 49.2%;" data-location="4">社塘村</div>
+        <div class="location-label" style="left: 60.5%; top: 45.8%;" data-location="5">阳三村</div>
+        <div class="location-label" style="left: 58.1%; top: 62%;" data-location="6">大竹村</div>
+        <div class="location-label" style="left: 62.1%; top: 37.3%;" data-location="7">罗阳村</div>
+        <div class="location-label" style="left: 66%; top: 26.8%;" data-location="8">司马村</div>
+        <div class="location-label" style="left: 65.5%; top: 50.8%;" data-location="9">凌霄村</div>
+        <div class="location-label" style="left: 71%; top: 32.6%;" data-location="10">石忽村</div>
+        <div class="location-label" style="left: 68.7%; top: 19.9%;" data-location="11">新阳村</div>
+        <div class="location-label" style="left: 72%; top: 50.6%;" data-location="12">中和村</div>
+        <div class="location-label" style="left: 76.8%; top: 51%;" data-location="13">中联村</div>
+        <div class="location-label" style="left: 72.3%; top: 64.2%;" data-location="14">河㙟村</div>
     </div>
 
-    <!-- 添加页脚 -->
-    <footer class="text-center py-3" style="background-color: #c12c1f; color: white;">
-        <p class="mb-1">版权所有：中国共产党阳春市委员会组织部</p>
-        <p class="mb-0">联系电话：<a href="tel:0662-7870805" style="color: #4e9eff; text-decoration: none;">0662-7870805</a></p>
-    </footer>
-
-    <style>
-        /* 设置模态框背景为半透明 */
-        #locationModal .modal-content {
-            background-color: rgba(255, 255, 255, 0.8);
-            /* 白色背景，透明度为 0.8 */
-            border-radius: 15px;
-            /* 圆角 */
-        }
-
-        /* 设置模态框标题和内容的文字颜色 */
-        #locationModal .modal-header,
-        #locationModal .modal-body {
-            color: #333;
-            /* 文字颜色 */
-        }
-    </style>
-
-<!-- 模态框模板 -->
-<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="locationModalLabel">地点名称</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
-            </div>
-            <div class="modal-body">
-                <h6>【区位交通】</h6>
-                <p id="location-traffic">加载中...</p>
-                <h6>【区划人口】</h6>
-                <p id="location-population">加载中...</p>
-                <h6>【党组织情况】</h6>
-                <p id="location-party">加载中...</p>
-                <p>实时数据：<span id="location-data">加载中...</span></p>
+    <!-- 模态框 -->
+    <div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="locationModalLabel">地点名称</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>【区位交通】</h6>
+                    <p id="location-traffic">加载中...</p>
+                    <h6>【区划人口】</h6>
+                    <p id="location-population">加载中...</p>
+                    <h6>【党组织情况】</h6>
+                    <p id="location-party">加载中...</p>
+                    <p>实时数据：<span id="location-data">加载中...</span></p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    async function fetchLocationData(id) {
-        try {
-            console.log(`正在请求数据，ID: ${id}`);
-            const response = await fetch(`js/locations.json`);
-            const allData = await response.json();
-            
-            if (allData[id]) {
-                console.log('获取的数据:', allData[id]);
-                return allData[id];
-            } else {
-                throw new Error('未找到数据');
-            }
-        } catch (error) {
-            console.error('获取数据失败:', error);
-            throw error;
-        }
-    }
+    <footer class="text-center py-3">
+        <p class="mb-1">版权所有：中国共产党阳春市委员会组织部</p>
+        <p class="mb-0">联系电话：<a href="tel:0662-7870805">0662-7870805</a></p>
+    </footer>
 
-    // 点击事件处理
-    document.addEventListener('DOMContentLoaded', function() {
-        const locationLabels = document.querySelectorAll('.location-label');
-        
-        locationLabels.forEach(label => {
-            label.addEventListener('click', async function() {
-                const locationId = this.dataset.location;
-                const locationName = this.textContent.trim();
-                console.log(`点击了位置: ${locationName}, ID: ${locationId}`);
-                
-                const modal = document.getElementById('locationModal');
-                const bootstrapModal = new bootstrap.Modal(modal);
-                
-                // 先显示模态框
-                bootstrapModal.show();
-                
-                // 设置加载状态
-                modal.querySelector('.modal-title').textContent = locationName;
-                modal.querySelector('#location-traffic').textContent = '正在加载...';
-                modal.querySelector('#location-population').textContent = '正在加载...';
-                modal.querySelector('#location-party').textContent = '正在加载...';
-                modal.querySelector('#location-data').textContent = '正在加载...';
-
-                try {
-                    const data = await fetchLocationData(locationId);
-                    if (data.description) {
-                        const parts = {
-                            traffic: '',
-                            population: '',
-                            party: ''
-                        };
-                        
-                        // 解析描述文本
-                        const sections = data.description.split('【');
-                        sections.forEach(section => {
-                            if (section.startsWith('区位交通】')) {
-                                parts.traffic = section.replace('区位交通】', '');
-                            } else if (section.startsWith('区划人口】')) {
-                                parts.population = section.replace('区划人口】', '');
-                            } else if (section.startsWith('党组织情况】')) {
-                                parts.party = section.replace('党组织情况】', '');
-                            }
-                        });
-
-                        // 更新模态框内容
-                        modal.querySelector('#location-traffic').textContent = parts.traffic || '暂无数据';
-                        modal.querySelector('#location-population').textContent = parts.population || '暂无数据';
-                        modal.querySelector('#location-party').textContent = parts.party || '暂无数据';
-                        modal.querySelector('#location-data').textContent = data.data || '暂无数据';
-                    }
-                } catch (error) {
-                    console.error('处理数据时出错：', error);
-                    modal.querySelector('#location-traffic').textContent = '加载失败';
-                    modal.querySelector('#location-population').textContent = '加载失败';
-                    modal.querySelector('#location-party').textContent = '加载失败';
-                    modal.querySelector('#location-data').textContent = '加载失败';
-                }
-            });
-        });
-    });
-</script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.bundle.min.js"></script>
+    <script src="js/map.js"></script>
 </body>
 </html>

@@ -1,0 +1,108 @@
+.header {
+    background-color: #c12c1f;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    width: 48px;
+    height: 48px;
+}
+
+.nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav a:hover,
+.nav a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.map-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+}
+
+.location-label {
+    position: absolute;
+    background-color: rgba(193, 44, 31, 0.8);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.location-label:hover {
+    background-color: rgba(193, 44, 31, 1);
+}
+
+#locationModal .modal-content {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+}
+
+#locationModal .modal-header,
+#locationModal .modal-body {
+    color: #333;
+}
+
+footer {
+    background-color: #c12c1f;
+    color: white;
+    margin-top: auto;
+}
+
+footer a {
+    color: #4e9eff;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 1rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nav a {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+} 
