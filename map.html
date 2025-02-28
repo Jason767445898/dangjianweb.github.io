@@ -82,21 +82,7 @@
             color: white;
         }
 
-        /* 为每个标签设置具体位置 */
-        #label-xinyang { top: 15%; right: 15%; }      /* 新阳村 */
-        #label-sima { top: 20%; right: 25%; }         /* 司马村 */
-        #label-shihong { top: 18%; right: 20%; }      /* 石忽村 */
-        #label-luoyang { top: 45%; left: 45%; }       /* 罗阳村 */
-        #label-xinzhu { top: 40%; left: 40%; }        /* 新竹村 */
-        #label-shetang { top: 25%; left: 45%; }       /* 社塘村 */
-        #label-yangsan { top: 35%; left: 35%; }       /* 阳三村 - 阳三村 */
-        #label-datang { top: 35%; left: 30%; }        /* 大塘村 */
-        #label-yunlian { top: 50%; left: 25%; }       /* 云帘村 */
-        #label-dazhu { top: 50%; left: 40%; }         /* 大竹村 */
-        #label-lingxiao { top: 45%; left: 50%; }    /* 凌霄村 */
-        #label-zhonghe { top: 55%; right: 25%; }      /* 中和村 */
-        #label-zhonglian { top: 45%; right: 15%; }    /* 中联村 */
-        #label-helang { top: 60%; right: 20%; }       /* 河朗村 */
+       
 
         /* 添加标签连接线 */
         .location-label::before {
@@ -196,7 +182,7 @@
             background-color: #c12c1f;
             padding: 1rem 2rem;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             color: white;
         }
@@ -305,21 +291,54 @@
 
     <div class="map-container">
         <img src="picture/map.jpg" alt="河㙟地图" class="map-image">
+
+                <!-- 地点标签 - 需要手动设置坐标 -->
+                <div class="location-label" style="left: 45.2%; top: 64.5%;"data-location="1">
+                    云帘村
+                </div>
+                <div class="location-label" style="left: 48.5%; top: 53%;" data-location="2">
+                    大塘村
+                </div>
+                <div class="location-label" style="left: 53.7%; top: 50%;" data-location="3">
+                    新竹村
+                </div>
+                <div class="location-label" style="left: 56.4%; top: 48.2%;" data-location="4">
+                    社塘村
+                </div>
+                <div class="location-label" style="left: 60.5%; top: 48.8%;" data-location="5">
+                    阳三村
+                </div>
+                <div class="location-label" style="left: 58.1%; top: 62%;" data-location="6">
+                    大竹村
+                </div>
+                <div class="location-label" style="left: 62.1%; top: 37.3%;" data-location="7">
+                    罗阳村
+                </div>
+                <div class="location-label" style="left: 66%; top: 26.8%;" data-location="8">
+                    司马村
+                </div>
+                <div class="location-label" style="left: 65.5%; top: 50.8%;" data-location="9">
+                    凌霄村
+                </div>
+                <div class="location-label" style="left: 71%; top: 32.6%;" data-location="10">
+                    石忽村
+                </div>
+                <div class="location-label" style="left: 68.7%; top: 19.9%;" data-location="11">
+                    新阳村
+                </div>
+                <div class="location-label" style="left: 72%; top: 50.6%;" data-location="12">
+                    中和村
+                </div>
+                <div class="location-label" style="left: 76.8%; top: 51%;" data-location="13">
+                    中联村
+                </div>
+                <div class="location-label" style="left: 72.3%; top: 64.2%;" data-location="14">
+                    河㙟村
+                </div>
+                <!-- 重复添加其他15个地点... -->
         
-        <div id="label-xinyang" class="location-label" data-location="11">新阳村</div>
-        <div id="label-sima" class="location-label" data-location="8">司马村</div>
-        <div id="label-shihong" class="location-label" data-location="10">石忽村</div>
-        <div id="label-luoyang" class="location-label" data-location="7">罗阳村</div>
-        <div id="label-xinzhu" class="location-label" data-location="3">新竹村</div>
-        <div id="label-shetang" class="location-label" data-location="4">社塘村</div>
-        <div id="label-yangsan" class="location-label" data-location="5">阳三村</div>
-        <div id="label-datang" class="location-label" data-location="2">大塘村</div>
-        <div id="label-yunlian" class="location-label" data-location="1">云帘村</div>
-        <div id="label-dazhu" class="location-label" data-location="6">大竹村</div>
-        <div id="label-lingxiao" class="location-label" data-location="9">凌霄村</div>
-        <div id="label-zhonghe" class="location-label" data-location="12">中和村</div>
-        <div id="label-zhonglian" class="location-label" data-location="13">中联村</div>
-        <div id="label-helang" class="location-label" data-location="14">河朗村</div>
+        
+       
     </div>
 
     <!-- 添加页脚 -->
@@ -346,12 +365,12 @@
     </style>
 
 <!-- 模态框模板 -->
-<div class="modal fade" id="locationModal">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="locationModal" tabindex="-1" role="dialog" aria-labelledby="locationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">地点名称</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title" id="locationModalLabel">地点名称</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
             </div>
             <div class="modal-body">
                 <h6>【区位交通】</h6>
@@ -367,32 +386,49 @@
 </div>
 
 <script>
-    // 使用原生 JavaScript 替代 jQuery
+    async function fetchLocationData(id) {
+        try {
+            console.log(`正在请求数据，ID: ${id}`);
+            const response = await fetch(`js/locations.json`);
+            const allData = await response.json();
+            
+            if (allData[id]) {
+                console.log('获取的数据:', allData[id]);
+                return allData[id];
+            } else {
+                throw new Error('未找到数据');
+            }
+        } catch (error) {
+            console.error('获取数据失败:', error);
+            throw error;
+        }
+    }
+
+    // 点击事件处理
     document.addEventListener('DOMContentLoaded', function() {
         const locationLabels = document.querySelectorAll('.location-label');
         
         locationLabels.forEach(label => {
-            label.addEventListener('click', function() {
+            label.addEventListener('click', async function() {
                 const locationId = this.dataset.location;
                 const locationName = this.textContent.trim();
                 console.log(`点击了位置: ${locationName}, ID: ${locationId}`);
                 
                 const modal = document.getElementById('locationModal');
+                const bootstrapModal = new bootstrap.Modal(modal);
                 
-                // 更新模态框内容
+                // 先显示模态框
+                bootstrapModal.show();
+                
+                // 设置加载状态
                 modal.querySelector('.modal-title').textContent = locationName;
                 modal.querySelector('#location-traffic').textContent = '正在加载...';
                 modal.querySelector('#location-population').textContent = '正在加载...';
                 modal.querySelector('#location-party').textContent = '正在加载...';
                 modal.querySelector('#location-data').textContent = '正在加载...';
-                
-                // 显示模态框
-                const bootstrapModal = new bootstrap.Modal(modal);
-                bootstrapModal.show();
 
-                // 获取数据
-                fetchLocationData(locationId).then(data => {
-                    console.log('开始处理数据');
+                try {
+                    const data = await fetchLocationData(locationId);
                     if (data.description) {
                         const parts = {
                             traffic: '',
@@ -418,13 +454,13 @@
                         modal.querySelector('#location-party').textContent = parts.party || '暂无数据';
                         modal.querySelector('#location-data').textContent = data.data || '暂无数据';
                     }
-                }).catch(error => {
+                } catch (error) {
                     console.error('处理数据时出错：', error);
                     modal.querySelector('#location-traffic').textContent = '加载失败';
                     modal.querySelector('#location-population').textContent = '加载失败';
                     modal.querySelector('#location-party').textContent = '加载失败';
                     modal.querySelector('#location-data').textContent = '加载失败';
-                });
+                }
             });
         });
     });
