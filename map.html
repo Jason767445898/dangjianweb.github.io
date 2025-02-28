@@ -71,6 +71,7 @@
             cursor: pointer;
             transition: all 0.3s;
             z-index: 1;
+            white-space: nowrap;  /* 防止文字换行 */
         }
 
         /* 标签悬停效果 */
@@ -82,36 +83,52 @@
         }
 
         /* 为每个标签设置具体位置 */
-        #label-xinyang { top: 10%; left: 75%; }     /* 新阳村 */
-        #label-sima { top: 15%; left: 65%; }        /* 司马村 */
-        #label-shihong { top: 20%; left: 70%; }     /* 石忽村 */
-        #label-luoyang { top: 30%; left: 60%; }     /* 罗阳村 */
-        #label-xinzhu { top: 35%; left: 55%; }      /* 新竹村 */
-        #label-shetang { top: 25%; left: 50%; }     /* 社塘村 */
-        #label-yangsan { top: 40%; left: 45%; }     /* 阳三村 */
-        #label-datang { top: 45%; left: 40%; }      /* 大塘村 */
-        #label-yunlian { top: 50%; left: 35%; }     /* 云帘村 */
-        #label-dazhu { top: 55%; left: 45%; }       /* 大竹村 */
+        #label-xinyang { top: 15%; right: 15%; }      /* 新阳村 */
+        #label-sima { top: 20%; right: 25%; }         /* 司马村 */
+        #label-shihong { top: 18%; right: 20%; }      /* 石忽村 */
+        #label-luoyang { top: 45%; left: 45%; }       /* 罗阳村 */
+        #label-xinzhu { top: 40%; left: 40%; }        /* 新竹村 */
+        #label-shetang { top: 25%; left: 45%; }       /* 社塘村 */
+        #label-yangsan { top: 35%; left: 35%; }       /* 阳三村 - 阳三村 */
+        #label-datang { top: 35%; left: 30%; }        /* 大塘村 */
+        #label-yunlian { top: 50%; left: 25%; }       /* 云帘村 */
+        #label-dazhu { top: 50%; left: 40%; }         /* 大竹村 */
         #label-lingxiao { top: 45%; left: 50%; }    /* 凌霄村 */
-        #label-zhonghe { top: 60%; left: 75%; }     /* 中和村 */
-        #label-zhonglian { top: 55%; left: 85%; }   /* 中联村 */
-        #label-helang { top: 65%; left: 80%; }      /* 河朗村 */
+        #label-zhonghe { top: 55%; right: 25%; }      /* 中和村 */
+        #label-zhonglian { top: 45%; right: 15%; }    /* 中联村 */
+        #label-helang { top: 60%; right: 20%; }       /* 河朗村 */
 
-        /* 添加连接线效果 */
-        .location-label::after {
+        /* 添加标签连接线 */
+        .location-label::before {
             content: '';
             position: absolute;
-            width: 20px;
+            width: 15px;
             height: 1px;
-            background: rgba(0, 0, 0, 0.2);
-            transform-origin: left center;
+            background: rgba(0, 0, 0, 0.3);
+            top: 50%;
+        }
+
+        /* 左侧标签的连接线 */
+        .location-label[id^="label-yunlian"]::before,
+        .location-label[id^="label-datang"]::before {
+            right: -15px;
+        }
+
+        /* 右侧标签的连接线 */
+        .location-label[id^="label-zhonglian"]::before,
+        .location-label[id^="label-helang"]::before {
+            left: -15px;
         }
 
         /* 响应式调整 */
         @media (max-width: 768px) {
             .location-label {
                 font-size: 12px;
-                padding: 2px 4px;
+                padding: 2px 6px;
+            }
+            
+            .location-label::before {
+                width: 10px;
             }
         }
 
